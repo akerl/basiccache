@@ -1,5 +1,5 @@
 module Basic_Cache
-    Version = '0.0.1'
+    Version = '0.0.2'
 
     class << self
         def new(*args)
@@ -7,12 +7,12 @@ module Basic_Cache
         end
     end
 
-    if RUBY_VERSION.to_i >= 2
-        def get_caller
+    if Kernel.respond_to? 'caller_locations'
+        def self.get_caller
             caller_locations(2, 1)[0].label
         end
     else
-        def get_caller
+        def self.get_caller
             caller[1][/`([^']*)'/, 1]
         end
     end
@@ -26,8 +26,10 @@ module Basic_Cache
             @store.clear
         end
 
-        def is_cached?(key = nil)
+        def cache(key = nil, &code)
             key ||= Basic_Cache::get_caller()
+            return @store[key] if store.include? key
+            @store[key] = code.call
         end
     end
 end
