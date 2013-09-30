@@ -2,12 +2,12 @@
 # This module provides a simple key/value cache for storing computation results
 
 module Basic_Cache
-    Version = '0.0.5'
-
-    ##
-    # Insert a helper .new() method for creating a new Cache object
+    Version = '0.0.6'
 
     class << self
+        ##
+        # Insert a helper .new() method for creating a new Cache object
+
         def new(*args)
             self::Cache.new(*args)
         end
