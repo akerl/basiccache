@@ -1,5 +1,5 @@
 module Basic_Cache
-    Version = '0.0.2'
+    Version = '0.0.3'
 
     class << self
         def new(*args)
@@ -27,9 +27,7 @@ module Basic_Cache
         end
 
         def cache(key = nil, &code)
-            key ||= Basic_Cache::get_caller()
-            return @store[key] if store.include? key
-            @store[key] = code.call
+            @store[key || Basic_Cache::get_caller()] ||= code.call
         end
     end
 end
