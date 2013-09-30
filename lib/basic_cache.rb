@@ -1,5 +1,5 @@
 module Basic_Cache
-    Version = '0.0.4'
+    Version = '0.0.5'
 
     class << self
         def new(*args)
@@ -18,6 +18,8 @@ module Basic_Cache
     end
 
     class Cache
+        attr_reader :store
+
         def initialize
             @store = Hash.new
         end
