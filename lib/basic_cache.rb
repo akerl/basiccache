@@ -1,5 +1,5 @@
 module Basic_Cache
-    Version = '0.0.3'
+    Version = '0.0.4'
 
     class << self
         def new(*args)
@@ -9,7 +9,7 @@ module Basic_Cache
 
     if Kernel.respond_to? 'caller_locations'
         def self.get_caller
-            caller_locations(2, 1)[0].label
+            caller_locations(2, 1).first.label
         end
     else
         def self.get_caller
@@ -27,7 +27,7 @@ module Basic_Cache
         end
 
         def cache(key = nil, &code)
-            @store[key || Basic_Cache::get_caller()] ||= code.call
+            @store[(key || Basic_Cache::get_caller()).to_sym] ||= code.call
         end
     end
 end
