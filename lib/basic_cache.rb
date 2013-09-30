@@ -2,7 +2,7 @@
 # This module provides a simple key/value cache for storing computation results
 
 module Basic_Cache
-    Version = '0.0.6'
+    Version = '0.0.7'
 
     class << self
         ##
@@ -55,6 +55,13 @@ module Basic_Cache
 
         def cache(key = nil, &code)
             @store[(key || Basic_Cache::get_caller()).to_sym] ||= code.call
+        end
+
+        ##
+        # Return the size of the cache
+
+        def size
+            @store.length
         end
     end
 end
