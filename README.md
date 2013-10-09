@@ -1,6 +1,8 @@
 basic\_cache
 ========
 
+[![Gem Version](https://badge.fury.io/rb/basic_cache.png)](http://badge.fury.io/rb/basic\_cache)
+
 Provides a minimal key/value caching layer
 
 ## Usage
