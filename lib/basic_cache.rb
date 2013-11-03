@@ -2,7 +2,7 @@
 # This module provides a simple key/value cache for storing computation results
 
 module Basic_Cache
-    Version = '0.0.7'
+    Version = '0.0.8'
 
     class << self
         ##
@@ -62,6 +62,31 @@ module Basic_Cache
 
         def size
             @store.length
+        end
+    end
+
+    ##
+    # Time-based cache object
+
+    class Time_Cache < Cache
+        attr_reader :lifetime
+
+        ##
+        # Generate an empty store, with a default lifetime of 60 seconds
+
+        def initialize(lifetime=30)
+            @lifetime = lifetime
+            @cache_item = Struct.new(:stamp, :value)
+            super()
+        end
+
+        ##
+        # If the key is cached but expired, clear it
+
+        def cache(key = nil, &code)
+            key = (key || Basic_Cache::get_caller()).to_sym
+            @store[key] = @cache_item.new(Time.now, code.call) unless @store.include? key and Time.now - @store[key].stamp < @lifetime
+            @store[key].value
         end
     end
 end
