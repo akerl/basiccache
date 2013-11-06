@@ -2,7 +2,7 @@
 # This module provides a simple key/value cache for storing computation results
 
 module Basic_Cache
-    Version = '0.0.9'
+    Version = '0.0.10'
 
     class << self
         ##
@@ -68,8 +68,8 @@ module Basic_Cache
         # Check if a value is cached
         # (just a wrapper, but it's overridden in subclasses where cache expiration/invalidation occurs)
 
-        def include?(key)
-            @store.include? key
+        def include?(key = nil)
+            @store.include? (key || Basic_Cache::get_caller()).to_sym
         end
     end
 
@@ -100,7 +100,8 @@ module Basic_Cache
         ##
         # Check if a value is cached and not expired
 
-        def include?(key)
+        def include?(key = nil)
+            key = (key || Basic_Cache::get_caller()).to_sym
             @store.include? key and Time.now - @store[key].stamp < @lifetime
         end
     end
