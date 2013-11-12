@@ -27,7 +27,7 @@ class Basic_Cache_Test < Test::Unit::TestCase
         cache = Basic_Cache.new
         cache.cache { $compute.call(10) }
         assert_equal cache.store.length, 1
-        cache.clear
+        cache.clear!
         assert_equal cache.store.length, 0
     end
 

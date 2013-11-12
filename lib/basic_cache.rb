@@ -2,7 +2,7 @@
 # This module provides a simple key/value cache for storing computation results
 
 module Basic_Cache
-    Version = '0.0.7'
+    Version = '0.0.8'
 
     class << self
         ##
@@ -43,10 +43,10 @@ module Basic_Cache
         end
 
         ##
-        # Empty out the store
+        # Empty out either the given key or the full store
 
-        def clear
-            @store.clear
+        def clear!(key = nil)
+            key.nil? @store.clear : @store.delete(key)
         end
 
         ##

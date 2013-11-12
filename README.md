@@ -40,15 +40,17 @@ Results:
   0.000000   0.000000   0.000000 (  0.000005)
 ```
 
-To clear the cache, call .clear:
+To clear the cache, call .clear!:
 
 ```
 my_cache = Basic_Cache.new
 
 # do stuff
 
-my_cache.clear
+my_cache.clear!
 ```
+
+The .clear! method can be passed a key name to clear just a specific key, as well.
 
 ## Installation
 
