@@ -2,7 +2,7 @@
 # This module provides a simple key/value cache for storing computation results
 
 module Basic_Cache
-    Version = '0.0.8'
+    Version = '0.0.11'
 
     class << self
         ##
@@ -46,7 +46,7 @@ module Basic_Cache
         # Empty out either the given key or the full store
 
         def clear!(key = nil)
-            key.nil? @store.clear : @store.delete(key)
+            key.nil? ? @store.clear : @store.delete(key)
         end
 
         ##
@@ -62,6 +62,47 @@ module Basic_Cache
 
         def size
             @store.length
+        end
+
+        ##
+        # Check if a value is cached
+        # (just a wrapper, but it's overridden in subclasses where cache expiration/invalidation occurs)
+
+        def include?(key = nil)
+            @store.include? (key || Basic_Cache::get_caller()).to_sym
+        end
+    end
+
+    ##
+    # Time-based cache object
+
+    class Time_Cache < Cache
+        attr_reader :lifetime
+
+        ##
+        # Generate an empty store, with a default lifetime of 60 seconds
+
+        def initialize(lifetime=30)
+            @lifetime = lifetime
+            @cache_item = Struct.new(:stamp, :value)
+            super()
+        end
+
+        ##
+        # If the key is cached but expired, clear it
+
+        def cache(key = nil, &code)
+            key = (key || Basic_Cache::get_caller()).to_sym
+            @store[key] = @cache_item.new(Time.now, code.call) unless @store.include? key and Time.now - @store[key].stamp < @lifetime
+            @store[key].value
+        end
+
+        ##
+        # Check if a value is cached and not expired
+
+        def include?(key = nil)
+            key = (key || Basic_Cache::get_caller()).to_sym
+            @store.include? key and Time.now - @store[key].stamp < @lifetime
         end
     end
 end
