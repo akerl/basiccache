@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.authors     = ['Les Aker']
   s.email       = 'me@lesaker.org'
   s.files       = `git ls-files`.split
-  s.test_files       = `git ls-files test/`.split
+  s.test_files  = `git ls-files test/`.split
   s.homepage    = 'https://github.com/akerl/basiccache'
   s.license     = 'MIT'
 end
