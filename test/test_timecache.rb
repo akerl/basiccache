@@ -6,7 +6,7 @@ class TimeCacheTest < Test::Unit::TestCase
   def compute(n)
     (1..n).reduce { |a, e| a * e }
   end
-  
+
   def test_creation
     a = BasicCache::TimeCache.new
     assert_instance_of BasicCache::TimeCache, a
@@ -20,8 +20,8 @@ class TimeCacheTest < Test::Unit::TestCase
     cache = BasicCache::TimeCache.new
     cache.cache { compute(10) }
     assert cache.store.include? :test_caching
-    assert_equal cache.store[:test_caching].value, 3628800
-    assert_equal cache.cache, 3628800
+    assert_equal cache.store[:test_caching].value, 3_628_800
+    assert_equal cache.cache, 3_628_800
   end
 
   def test_clearing
@@ -34,8 +34,10 @@ class TimeCacheTest < Test::Unit::TestCase
 
   def test_speed_increase
     cache = BasicCache::TimeCache.new
-    trials = 2.times.map { Benchmark.measure { cache.cache { compute(50_000) } }.real }
-    assert (trials[0] > trials[1]*1000)
+    trials = 2.times.map do
+      Benchmark.measure { cache.cache { compute(50_000) } }.real
+    end
+    assert trials[0] > trials[1] * 1_000
   end
 
   def test_expiration
