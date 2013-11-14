@@ -1,8 +1,8 @@
-require File.join(Dir.pwd, 'lib/basic_cache.rb')
+require File.join(Dir.pwd, 'lib/basiccache.rb')
 
 Gem::Specification.new do |s|
-  s.name        = 'basic_cache'
-  s.version     = Basic_Cache::Version
+  s.name        = 'basiccache'
+  s.version     = BasicCache::VERSION
   s.date        = Time.now.strftime("%Y-%m-%d")
   s.summary     = 'Provides a minimal key/value caching layer'
   s.description = "Allows an application to dynamically cache values and retrieve them later"
@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.email       = 'me@lesaker.org'
   s.files       = `git ls-files`.split
   s.test_files       = `git ls-files test/`.split
-  s.homepage    = 'https://github.com/akerl/basic_cache'
+  s.homepage    = 'https://github.com/akerl/basiccache'
   s.license     = 'MIT'
 end
 
