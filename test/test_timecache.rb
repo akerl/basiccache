@@ -20,7 +20,7 @@ class TimeCacheTest < Test::Unit::TestCase
     cache = BasicCache::TimeCache.new
     cache.cache { compute(10) }
     assert cache.store.include? :test_caching
-    assert_equal cache.store[:test_caching], 3628800
+    assert_equal cache.store[:test_caching].value, 3628800
     assert_equal cache.cache, 3628800
   end
 
@@ -43,7 +43,7 @@ class TimeCacheTest < Test::Unit::TestCase
     cache.cache(:test) { 100 }
     assert cache.include? :test
     sleep 5
-    assert not cache.include? :test
+    assert cache.include?(:test) == false
   end
 end
 
