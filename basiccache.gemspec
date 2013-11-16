@@ -12,5 +12,6 @@ Gem::Specification.new do |s|
   s.test_files  = `git ls-files test/`.split
   s.homepage    = 'https://github.com/akerl/basiccache'
   s.license     = 'MIT'
+  s.add_development_dependency 'rubocop'
 end
 

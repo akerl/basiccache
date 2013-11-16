@@ -2,7 +2,7 @@
 # This module provides a simple key/value cache for storing computation results
 
 module BasicCache
-  VERSION = '0.0.14'
+  VERSION = '0.0.15'
 
   class << self
     ##
