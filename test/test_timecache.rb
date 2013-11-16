@@ -2,6 +2,9 @@ require 'test/unit'
 require 'benchmark'
 require 'basiccache'
 
+##
+# Lets test some timed caches!
+
 class TimeCacheTest < Test::Unit::TestCase
   def compute(n)
     (1..n).reduce { |a, e| a * e }
@@ -48,4 +51,3 @@ class TimeCacheTest < Test::Unit::TestCase
     assert cache.include?(:test) == false
   end
 end
-

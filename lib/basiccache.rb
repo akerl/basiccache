@@ -105,9 +105,11 @@ module BasicCache
     def cache(key = nil, &code)
       key ||= BasicCache.get_caller
       key = key.to_sym
+      # rubocop:disable AndOr
       unless @store.include? key and Time.now - @store[key].stamp < @lifetime
         @store[key] = @cache_item.new(Time.now, code.call)
       end
+      # rubocop:enable AndOr
       @store[key].value
     end
 
@@ -117,7 +119,9 @@ module BasicCache
     def include?(key = nil)
       key ||= BasicCache.get_caller
       key = key.to_sym
+      # rubocop:disable AndOr
       @store.include? key and Time.now - @store[key].stamp < @lifetime
+      # rubocop:enable AndOr
     end
 
     def [](key = nil)
@@ -125,4 +129,3 @@ module BasicCache
     end
   end
 end
-

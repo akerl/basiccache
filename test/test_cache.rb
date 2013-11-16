@@ -2,6 +2,9 @@ require 'test/unit'
 require 'benchmark'
 require 'basiccache'
 
+##
+# Let's cache some stuff!
+
 class BasicCacheTest < Test::Unit::TestCase
   def compute(n)
     (1..n).reduce { |a, e| a * e }
@@ -40,4 +43,3 @@ class BasicCacheTest < Test::Unit::TestCase
     assert trials[0] > trials[1] * 1_000
   end
 end
-
