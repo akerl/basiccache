@@ -2,7 +2,7 @@
 # This module provides a simple key/value cache for storing computation results
 
 module BasicCache
-  VERSION = '0.0.13'
+  VERSION = '0.0.14'
 
   class << self
     ##
@@ -73,6 +73,15 @@ module BasicCache
       key ||= BasicCache.get_caller
       @store.include? key.to_sym
     end
+
+    ##
+    # Retrieve cached value
+
+    def [](key = nil)
+      key ||= BasicCache.get_caller
+      fail KeyError, 'Key not cached' unless @store.include? key.to_sym
+      @store[key.to_sym]
+    end
   end
 
   ##
@@ -109,6 +118,10 @@ module BasicCache
       key ||= BasicCache.get_caller
       key = key.to_sym
       @store.include? key and Time.now - @store[key].stamp < @lifetime
+    end
+
+    def [](key = nil)
+      super.value
     end
   end
 end
