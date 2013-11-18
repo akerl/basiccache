@@ -11,4 +11,4 @@ notifications:
     channels:
     - irc.oftc.net#akerl
     channel_key:
-      secure: RpczmZJrvV9g0U4dq498gbacsc+Gpd9Teb4xrX3lV9G6nbl9Rk1pv0dLBiwllXe7+dSpF/t4mmK9BKISbEOuqJrQuFPcqZfWvOSglpizECX64EkiDM40XqvBrda+/w/k2mDgtrm5O5DuFWuYI0MHnCK8S4U+GPNQo6/OnSyc1ow=
+      secure: "S/ilmZ3R+Y/q28T76SPcTYzaVrgdQLPbGrc2ooHI6ppE6R58eFPJufpCiJ4lUGa/+YCUYsqZ48JJgLspSZNKmLkRtBenebt+JHgmSPejAp+zYG84qhB3uwKgNNojFVlexHyuS9/5uUTGlrhtkqdJrvniO1br5teRW2ogsLxf7hY="
