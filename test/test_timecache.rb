@@ -1,5 +1,6 @@
 # coding: UTF-8
 
+require 'helper'
 require 'test/unit'
 require 'benchmark'
 require 'basiccache'
@@ -8,10 +9,6 @@ require 'basiccache'
 # Lets test some timed caches!
 
 class TimeCacheTest < Test::Unit::TestCase
-  def compute(n)
-    (1..n).reduce { |a, e| a * e }
-  end
-
   def test_creation
     a = BasicCache::TimeCache.new
     assert_instance_of BasicCache::TimeCache, a
