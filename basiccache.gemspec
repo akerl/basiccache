@@ -14,6 +14,7 @@ Gem::Specification.new do |s|
   s.license     = 'MIT'
   s.add_development_dependency 'rubocop'
   s.add_development_dependency 'travis-lint'
+  s.add_development_dependency 'parser', '~> 2.1.0.pre1'
   s.add_development_dependency 'rake'
 end
 
