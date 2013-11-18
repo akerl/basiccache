@@ -6,5 +6,11 @@ rvm:
   - 1.9.3
   - jruby-19mode
   - rbx-19mode
+notifications:
+  email: false
+  irc:
+    channels:
+      - irc.oftc.net#akerl
+    channel_key:
+      - secure: "S2F29c5MQBtwWMhDDRclAxVVzxAzAGRQCiLCtBerjoZxu2XtGI3ruzmt0Kt+XwQYl3LROIh+B9fyempnE5M2WVQHUKrFXiQb3gBU4khpum9fZ8kp9nOU5349Eb94VuETvb90EyHFEZqp+ZuSX+fwW3iu9tr/ZlsQmHaHOK0XQAQ="
 ...
-
