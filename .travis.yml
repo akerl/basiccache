@@ -10,5 +10,5 @@ notifications:
   irc:
     channels:
       - irc.oftc.net#akerl
-    channel_key:
-      secure: "S/ilmZ3R+Y/q28T76SPcTYzaVrgdQLPbGrc2ooHI6ppE6R58eFPJufpCiJ4lUGa/+YCUYsqZ48JJgLspSZNKmLkRtBenebt+JHgmSPejAp+zYG84qhB3uwKgNNojFVlexHyuS9/5uUTGlrhtkqdJrvniO1br5teRW2ogsLxf7hY="
+    template:
+      - '%{repository}/%{branch}/%{build_number}: %{message} -- %{build_url}'

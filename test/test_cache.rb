@@ -39,6 +39,6 @@ class BasicCacheTest < Test::Unit::TestCase
     trials = 2.times.map do
       Benchmark.measure { cache.cache { compute(50_000) } }.real
     end
-    assert trials[0] > trials[1] * 1_000
+    assert trials[0] > trials[1] * 100
   end
 end
