@@ -1,3 +1,5 @@
+# coding: UTF-8
+
 ##
 # This module provides a simple key/value cache for storing computation results
 

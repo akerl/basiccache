@@ -1,3 +1,5 @@
+# coding: UTF-8
+
 require 'test/unit'
 require 'benchmark'
 require 'basiccache'
