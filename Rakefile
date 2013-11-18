@@ -1,9 +1,6 @@
 require "bundler/gem_tasks"
 require 'rake/testtask'
 require 'rubocop/rake_task'
-require 'coveralls/rake/task'
-
-Coveralls::RakeTask.new
 
 desc 'Run tests'
 Rake::TestTask.new do |t|
@@ -21,5 +18,5 @@ task :travislint do
   fail 'There is an issue with your .travis.yml' unless system('travis-lint')
 end
 
-task :default => [:test, :travislint, :rubocop, :build, :install, 'coveralls:push']
+task :default => [:test, :travislint, :rubocop, :build, :install]
 
