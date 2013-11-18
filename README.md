@@ -1,7 +1,10 @@
 BasicCache
 ========
 
-[![Gem Version](https://badge.fury.io/rb/basiccache.png)](http://badge.fury.io/rb/basiccache)
+[![Gem Version](https://badge.fury.io/rb/basiccache.png)](https://badge.fury.io/rb/basiccache)
+[![Dependency Status](https://gemnasium.com/akerl/basiccache.png)](https://gemnasium.com/akerl/basiccache)
+[![Code Climate](https://codeclimate.com/github/akerl/basiccache.png)](https://codeclimate.com/github/akerl/basiccache)
+[![Build Status](https://travis-ci.org/akerl/basiccache.png?branch=master)](https://travis-ci.org/akerl/basiccache)
 
 Provides a minimal key/value caching layer
 

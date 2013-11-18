@@ -13,5 +13,7 @@ Gem::Specification.new do |s|
   s.homepage    = 'https://github.com/akerl/basiccache'
   s.license     = 'MIT'
   s.add_development_dependency 'rubocop'
+  s.add_development_dependency 'travis-lint'
+  s.add_development_dependency 'rake'
 end
 
