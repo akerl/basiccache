@@ -1,10 +1,11 @@
-require "bundler/gem_tasks"
-require 'rake/testtask'
+require 'bundler/gem_tasks'
+require 'rspec/core/rake_task'
 require 'rubocop/rake_task'
 
 desc 'Run tests'
-Rake::TestTask.new do |t|
-  t.libs << 'test'
+Spec::Rake::SpecTask.new(:spec) do |t|
+  t.spec_files = FileList['spec/spec_*.rb']
+  t.options = '-v'
 end
 
 desc 'Run Rubocop on the gem'
@@ -18,5 +19,4 @@ task :travislint do
   fail 'There is an issue with your .travis.yml' unless system('travis-lint')
 end
 
-task :default => [:test, :travislint, :rubocop, :build, :install]
-
+task default: [:test, :travislint, :rubocop, :build, :install]
