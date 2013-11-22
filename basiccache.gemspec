@@ -13,10 +13,9 @@ Gem::Specification.new do |s|
   s.test_files  = `git ls-files test/test_*.rb`.split
   s.homepage    = 'https://github.com/akerl/basiccache'
   s.license     = 'MIT'
-  s.add_development_dependency 'rubocop'
-  s.add_development_dependency 'travis-lint'
-  s.add_development_dependency 'parser', '~> 2.1.0.pre1'
-  s.add_development_dependency 'rake'
-  s.add_development_dependency 'coveralls'
+
+  %w(rubocop travis-lint parser rake coveralls rspec).each do |gem|
+    s.add_development_dependency gem
+  end
 end
 
