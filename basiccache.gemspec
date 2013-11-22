@@ -9,13 +9,15 @@ Gem::Specification.new do |s|
   s.description = "Allows an application to dynamically cache values and retrieve them later"
   s.authors     = ['Les Aker']
   s.email       = 'me@lesaker.org'
-  s.files       = `git ls-files`.split
-  s.test_files  = `git ls-files test/test_*.rb`.split
+  s.files       = `git ls-files lib/*`.split
+  s.files      += %w(README.md LICENSE Gemfile Rakefile basiccache.gemspec)
+  s.test_files  = `git ls-files spec/*`.split
   s.homepage    = 'https://github.com/akerl/basiccache'
   s.license     = 'MIT'
 
-  %w(rubocop travis-lint parser rake coveralls rspec).each do |gem|
+  %w(rubocop travis-lint rake coveralls rspec).each do |gem|
     s.add_development_dependency gem
   end
+  s.add_development_dependency 'parser', '~> 2.1.0.pre1'
 end
 

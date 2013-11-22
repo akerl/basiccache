@@ -1,4 +1,5 @@
-require 'rspec'
-require 'basiccache'
 require 'coveralls'
 Coveralls.wear!
+
+require 'rspec'
+require 'basiccache'
