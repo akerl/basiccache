@@ -8,7 +8,7 @@ notifications:
   email: false
   irc:
     channels:
-      - irc.oftc.net#akerl
+      - ircs://irc.oftc.net:6697#akerl
     channel_key:
       secure: "AFEdB/WjJAI7N1LJcdBS/qtyR7hwrY0HEUp1Tq2Wyr9ieFl8VpN+GjRdncjGq+rtZe5jpE1Ind5GErHStg6UTLkocOo1ITcxLwpUhMatox6RdGLsFwTVWymV00KwRTD4S+X5cU9dfGlmGOTNuvDEjh6IarAmnQ/qb9ZX0slJHQg="
     template:
