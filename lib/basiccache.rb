@@ -4,7 +4,7 @@
 # This module provides a simple key/value cache for storing computation results
 
 module BasicCache
-  VERSION = '0.0.16'
+  VERSION = '0.0.17'
 
   class << self
     ##
@@ -128,6 +128,16 @@ module BasicCache
 
     def [](key = nil)
       super.value
+    end
+
+    ##
+    # Return the size of the cache (don't include expired entries)
+    # By default, purges expired entries while iterating
+
+    def size(purge = true)
+      valid = @store.select { |k, v| Time.now - v.stamp < @lifetime }
+      @store = valid if purge
+      valid.size
     end
   end
 end
