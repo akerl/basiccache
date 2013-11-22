@@ -1,7 +1,7 @@
-##
-# Time-based cache object
+module BasicCache
+  ##
+  # Time-based cache object
 
-module BasicCache::TimeCache
   class TimeCache < Cache
     attr_reader :lifetime
 

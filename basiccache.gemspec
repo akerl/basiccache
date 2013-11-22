@@ -1,4 +1,5 @@
-require File.join(Dir.pwd, 'lib/basiccache.rb')
+$:.unshift File.expand_path('../lib/', __FILE__)
+require 'basiccache.rb'
 
 Gem::Specification.new do |s|
   s.name        = 'basiccache'
