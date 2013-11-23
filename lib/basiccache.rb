@@ -2,8 +2,6 @@
 # This module provides a simple key/value cache for storing computation results
 
 module BasicCache
-  VERSION = '0.0.17'
-
   # Check if we're using a version if Ruby that supports caller_locations
   NEW_CALL = Kernel.respond_to? 'caller_locations'
 
@@ -28,5 +26,6 @@ module BasicCache
   end
 end
 
+require 'version'
 require 'caches/cache'
 require 'caches/timecache'
