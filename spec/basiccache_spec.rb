@@ -12,4 +12,16 @@ describe BasicCache do
       expect(BasicCache.new).to be_an_instance_of BasicCache::Cache
     end
   end
+
+  describe '.get_caller' do
+    it "returns the calling function's name" do
+      expect(BasicCache.get_caller).to eql 'instance_eval'
+    end
+    it 'uses caller_locations on Ruby 2.0.0+' do
+      expect(BasicCache::NEW_CALL).to be_true if RUBY_VERSION.to_i >= 2
+    end
+    it 'uses caller on Ruby 1.x' do
+      expect(BasicCache::NEW_CALL).to be_false if RUBY_VERSION.to_i < 2
+    end
+  end
 end
