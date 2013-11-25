@@ -56,7 +56,37 @@ my_cache.clear!
 
 The .clear! method can be passed a key name to clear just a specific key, as well.
 
+### MethodCacher
+
+MethodCacher provides a helper module for caching method calls inside a class.
+
+To cache the results of Foo.bar and Foo.act, for instance, you'd do the following:
+
+```
+require 'basiccache'
+
+class Foo
+
 ## Subclasses
+  include MethodCacher
+
+  def initialize
+    enable_caching(methods: [:bar, :act])
+  end
+
+  def bar
+    # deep computation here
+  end
+
+  def act
+    # more super deep calculations
+  end
+
+  def other
+    # this method isn't cached
+  end
+end
+```
 
 ### TimeCache
 

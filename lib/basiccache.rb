@@ -26,6 +26,6 @@ module BasicCache
   end
 end
 
-require 'version'
 require 'caches/cache'
 require 'caches/timecache'
+require 'methodcacher'
