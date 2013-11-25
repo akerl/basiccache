@@ -4,9 +4,8 @@
 # Then, in initialize, call enable_caching
 
 module MethodCacher
-  def enable_caching(cache: nil, methods: nil)
+  def enable_caching(methods, cache = nil)
     cache ||= BasicCache.new
-    methods ||= []
     methods.each do |name|
       uncached_name = "#{name}_uncached".to_sym
       (class << self; self; end).class_eval do

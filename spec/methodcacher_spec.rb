@@ -6,13 +6,10 @@ require 'spec_helper'
 class Example
   include MethodCacher
 
-  def initialize(skip_cache: false)
+  def initialize(skip_cache = false)
     return if skip_cache
-    enable_caching(methods: [:repeat])
-    enable_caching(
-      cache: BasicCache::TimeCache.new(1),
-      methods: [:time_repeat]
-    )
+    enable_caching [:repeat]
+    enable_caching [:time_repeat], BasicCache::TimeCache.new(1)
   end
 
   def repeat(input)

@@ -66,12 +66,10 @@ To cache the results of Foo.bar and Foo.act, for instance, you'd do the followin
 require 'basiccache'
 
 class Foo
-
-## Subclasses
   include MethodCacher
 
   def initialize
-    enable_caching(methods: [:bar, :act])
+    enable_caching [:bar, :act]
   end
 
   def bar
@@ -87,6 +85,26 @@ class Foo
   end
 end
 ```
+
+You can also provide a second argument to enable_caching to specify a custom cache object (like TimeCache):
+
+```
+require 'basiccache'
+
+class Foo
+  include MethodCacher
+
+  def initialize
+    enable_caching [:act], BasicCache::TimeCache.new
+  end
+
+  def act
+    # super deep time-sensitive calculations
+  end
+end
+```
+
+## Subclasses
 
 ### TimeCache
 
