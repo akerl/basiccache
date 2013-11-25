@@ -5,6 +5,7 @@ require 'spec_helper'
 
 class Example
   include MethodCacher
+
   def initialize(skip_cache: false)
     return if skip_cache
     enable_caching(methods: [:repeat])
