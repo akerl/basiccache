@@ -134,6 +134,10 @@ Does the cache include 'test'? true
 Does the cache include 'test' now? false
 ```
 
+## Important Note About Keys
+
+BasicCache attempts to guess the key name from the stack by looking for the name of the method that called it. This is convenient for most use cases, but if you're using metaprogramming or nested code blocks, this can cause that method name to be "block (2 levels) in \<top (required)>" or similar. In this case, keys can conflict and give back weird results. The fix is for you to manually specify your own keys to .cache calls.
+
 ## Installation
 
     gem install basiccache
