@@ -16,6 +16,10 @@ class Example
     input
   end
 
+  def other_repeat(input)
+    input
+  end
+
   def time_repeat(input)
     input
   end
@@ -51,6 +55,10 @@ describe MethodCacher do
     it 'aliases the uncached methods' do
       expect(test_object.repeat_uncached 5).to eql 5
       expect(test_object.repeat_uncached 4).to eql 4
+    end
+    it 'properly separates keys in the cache' do
+      expect(test_object.repeat 8).to eql 8
+      expect(test_object.other_repeat 3).to eql 3
     end
   end
 end
