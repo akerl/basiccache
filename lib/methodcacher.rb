@@ -4,7 +4,6 @@
 # Then, in initialize, call enable_caching
 
 module MethodCacher
-
   ##
   # Enable caching for the listed methods
 
