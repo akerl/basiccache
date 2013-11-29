@@ -8,7 +8,7 @@ module BasicCache
     ##
     # Generate an empty store, with a default lifetime of 60 seconds
 
-    def initialize(lifetime = 30)
+    def initialize(lifetime = 60)
       @lifetime = lifetime
       @cache_item = Struct.new(:stamp, :value)
       super()
