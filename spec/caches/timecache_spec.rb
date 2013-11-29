@@ -18,7 +18,7 @@ describe BasicCache::TimeCache do
   end
   it 'has a set lifetime' do
     expect(cache.lifetime).to eq 1
-    expect(BasicCache::TimeCache.new.lifetime).to eq 30
+    expect(BasicCache::TimeCache.new.lifetime).to eq 60
   end
   describe '#size' do
     it 'shows the size of the cache' do

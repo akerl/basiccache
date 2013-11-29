@@ -4,6 +4,10 @@
 # Then, in initialize, call enable_caching
 
 module MethodCacher
+
+  ##
+  # Enable caching for the listed methods
+
   def enable_caching(methods, cache = nil)
     cache ||= BasicCache.new
     methods.each do |name|
