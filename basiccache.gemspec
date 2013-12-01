@@ -6,10 +6,11 @@ Gem::Specification.new do |s|
   s.description = "Allows an application to dynamically cache values and retrieve them later"
   s.authors     = ['Les Aker']
   s.email       = 'me@lesaker.org'
-  s.files       = `git ls-files`.split
-  s.test_files  = `git ls-files spec/*`.split
   s.homepage    = 'https://github.com/akerl/basiccache'
   s.license     = 'MIT'
+
+  s.files       = `git ls-files`.split
+  s.test_files  = `git ls-files spec/*`.split
 
   s.add_development_dependency 'rubocop'
   s.add_development_dependency 'travis-lint'
