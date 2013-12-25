@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    basiccache (0.0.25)
+    basiccache (0.0.26)
 
 GEM
   remote: https://rubygems.org/
