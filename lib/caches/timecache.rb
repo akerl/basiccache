@@ -18,7 +18,7 @@ module BasicCache
     # If the key is cached but expired, clear it
 
     def cache(key = nil, &code)
-      key ||= BasicCache.get_caller
+      key ||= BasicCache.caller_name
       key = key.to_sym
       # rubocop:disable AndOr
       unless @store.include? key and Time.now - @store[key].stamp < @lifetime
@@ -32,7 +32,7 @@ module BasicCache
     # Check if a value is cached and not expired
 
     def include?(key = nil)
-      key ||= BasicCache.get_caller
+      key ||= BasicCache.caller_name
       key = key.to_sym
       # rubocop:disable AndOr
       @store.include? key and Time.now - @store[key].stamp < @lifetime

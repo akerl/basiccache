@@ -24,7 +24,7 @@ module BasicCache
     # If not, run the code, cache the result, and return it
 
     def cache(key = nil, &code)
-      key ||= BasicCache.get_caller
+      key ||= BasicCache.caller_name
       @store[key.to_sym] ||= code.call
     end
 
@@ -40,7 +40,7 @@ module BasicCache
     # (just a wrapper, designed to be redefined by subclasses)
 
     def include?(key = nil)
-      key ||= BasicCache.get_caller
+      key ||= BasicCache.caller_name
       @store.include? key.to_sym
     end
 
@@ -48,7 +48,7 @@ module BasicCache
     # Retrieve cached value
 
     def [](key = nil)
-      key ||= BasicCache.get_caller
+      key ||= BasicCache.caller_name
       fail KeyError, 'Key not cached' unless include? key.to_sym
       @store[key.to_sym]
     end

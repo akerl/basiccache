@@ -20,7 +20,7 @@ module BasicCache
     # These methods return the name of the calling function 2 levels up
     # This allows them to return the name of whatever called Cache.cache()
 
-    def get_caller
+    def caller_name
       NEW_CALL ? caller_locations(2, 1).first.label : caller[1][/`([^']*)'/, 1]
     end
   end
