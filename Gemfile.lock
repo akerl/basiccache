@@ -21,7 +21,7 @@ GEM
     hashr (0.0.22)
     mime-types (2.0)
     multi_json (1.8.2)
-    parser (2.1.0.pre2)
+    parser (2.1.0)
       ast (~> 1.1)
       slop (~> 3.4, >= 3.4.5)
     powerpack (0.0.9)
@@ -62,7 +62,7 @@ DEPENDENCIES
   basiccache!
   coveralls
   fuubar
-  parser (~> 2.1.0.pre1)
+  parser
   rake
   rspec
   rubocop
