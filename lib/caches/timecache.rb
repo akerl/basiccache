@@ -15,7 +15,8 @@ module BasicCache
     end
 
     ##
-    # If the key is cached but expired, clear it
+    # Return a value from the cache, or calculate it and store it
+    # Recalculate if the cached value has expired
 
     def cache(key = nil, &code)
       key ||= BasicCache.caller_name
