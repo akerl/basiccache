@@ -26,6 +26,7 @@ module BasicCache
   end
 end
 
+require 'stores/store'
 require 'caches/cache'
 require 'caches/timecache'
 require 'methodcacher'

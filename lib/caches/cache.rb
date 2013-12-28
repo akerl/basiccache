@@ -1,4 +1,12 @@
+##
+# Define the basic cache and default store objects
+
 module BasicCache
+  ##
+  # Set default Store type
+
+  DEFAULT_STORE = BasicCache::Store
+  
   ##
   # Cache object, maintains a key/value store
 
@@ -8,15 +16,16 @@ module BasicCache
     ##
     # Generate an empty store
 
-    def initialize
-      @store = {}
+    def initialize(params = {})
+      params = { store: params } unless params.is_a? Hash
+      @store = params.fetch(:store) { DEFAULT_STORE.new }
     end
 
     ##
-    # Empty out either the given key or the full store
+    # Return the size of the cache
 
-    def clear!(key = nil)
-      key.nil? ? @store.clear : @store.delete(key.to_sym)
+    def size
+      @store.size
     end
 
     ##
@@ -26,13 +35,6 @@ module BasicCache
     def cache(key = nil, &code)
       key ||= BasicCache.caller_name
       @store[key.to_sym] ||= code.call
-    end
-
-    ##
-    # Return the size of the cache
-
-    def size
-      @store.length
     end
 
     ##
@@ -51,6 +53,19 @@ module BasicCache
       key ||= BasicCache.caller_name
       fail KeyError, 'Key not cached' unless include? key.to_sym
       @store[key.to_sym]
+    end
+
+    ##
+    # Empty out either the given key or the full store
+
+    def clear!(key = nil)
+      key.nil? ? @store.clear : @store.delete(key.to_sym)
+    end
+
+    ##
+    # Prunes invalid/expired keys (a noop for the basic cache)
+
+    def prune
     end
   end
 end
