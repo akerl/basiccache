@@ -6,7 +6,7 @@ module BasicCache
   # Set default Store type
 
   DEFAULT_STORE = BasicCache::Store
-  
+
   ##
   # Cache object, maintains a key/value store
 
