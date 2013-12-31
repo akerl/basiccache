@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe BasicCache::TimeCache do
   let(:cache) do
-    cache = BasicCache::TimeCache.new(1)
+    cache = BasicCache::TimeCache.new(lifetime: 1)
     cache.cache('a') { 3 }
     cache.cache(:b) { 5 }
     cache.cache { 9 }

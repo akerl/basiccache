@@ -18,7 +18,7 @@ module BasicCache
 
     def initialize(params = {})
       params = { store: params } unless params.is_a? Hash
-      @store = params.fetch(:store) { DEFAULT_STORE.new }
+      @store = params.fetch(:store) { BasicCache::DEFAULT_STORE.new }
     end
 
     ##

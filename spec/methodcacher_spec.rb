@@ -9,7 +9,7 @@ class Example
   def initialize(skip_cache = false)
     return if skip_cache
     enable_caching [:repeat]
-    enable_caching [:time_repeat], BasicCache::TimeCache.new(1)
+    enable_caching [:time_repeat], BasicCache::TimeCache.new(lifetime: 1)
   end
 
   def repeat(input)

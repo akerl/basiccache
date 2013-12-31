@@ -37,7 +37,7 @@ module BasicCache
       key ||= BasicCache.caller_name
       key = key.to_sym
       unless @store.include?(key) && Time.now - @store[key].stamp < @lifetime
-        @store[key] = @cache_item.new(Time.now, code.call)
+        @store[key] = TimeCacheItem.new(Time.now, code.call)
       end
       @store[key].value
     end
