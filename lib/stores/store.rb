@@ -13,17 +13,10 @@ module BasicCache
     end
 
     ##
-    # Clear the store
+    # Clears a specified key or the whole store
 
-    def clear!
-      @raw.clear
-    end
-
-    ##
-    # Delete a specific key
-
-    def delete(key)
-      @raw.delete key
+    def clear!(key = nil)
+      key.nil? ? @raw.clear : @raw.delete(key)
     end
 
     ##

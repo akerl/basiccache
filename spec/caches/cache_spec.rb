@@ -34,6 +34,21 @@ describe BasicCache::Cache do
       expect(subject.include? :c). to be_true
     end
   end
+  describe '#include?' do
+    it 'checks for a value in the cache' do
+      expect(cache.include? 'a').to be_true
+      expect(cache.include? :b).to be_true
+      expect(cache.include? 'z').to be_false
+      expect(cache.include? names[2]).to be_true
+    end
+  end
+  describe '#[]' do
+    it 'returns values from the cache' do
+      expect(cache['a']).to eql 3
+      expect(cache[:b]).to eql 5
+      expect { cache[:c] }.to raise_error KeyError
+    end
+  end
   describe '#clear!' do
     describe 'when given no argument' do
       it 'clears the cache' do
@@ -56,19 +71,9 @@ describe BasicCache::Cache do
       end
     end
   end
-  describe '#include?' do
-    it 'checks for a value in the cache' do
-      expect(cache.include? 'a').to be_true
-      expect(cache.include? :b).to be_true
-      expect(cache.include? 'z').to be_false
-      expect(cache.include? names[2]).to be_true
-    end
-  end
-  describe '#[]' do
-    it 'returns values from the cache' do
-      expect(cache['a']).to eql 3
-      expect(cache[:b]).to eql 5
-      expect { cache[:c] }.to raise_error KeyError
+  describe '#prune' do
+    it 'prunes invalid keys (none for Cache)' do
+      expect(cache.prune).to eql Array.new
     end
   end
 end

@@ -48,28 +48,6 @@ describe BasicCache::TimeCache do
       expect(cache.include? 'a').to be_false
     end
   end
-  describe '#clear!' do
-    describe 'when given no argument' do
-      it 'clears the cache' do
-        expect(cache.size).to eql 3
-        cache.clear!
-        expect(cache.size).to eql 0
-      end
-    end
-    describe 'when given an argument' do
-      it 'removes that entry from the cache' do
-        expect(cache.size).to eql 3
-        cache.clear! 'c'
-        expect(cache.size).to eql 3
-        expect(cache.clear!('a')[1]).to eql 3
-        expect(cache.size).to eql 2
-        expect(cache.clear!(:b)[1]).to eql 5
-        expect(cache.size).to eql 1
-        expect(cache.clear!(names[2])[1]).to eql 9
-        expect(cache.size).to eql 0
-      end
-    end
-  end
   describe '#include?' do
     it 'checks for a value in the cache' do
       expect(cache.include? 'a').to be_true
@@ -88,6 +66,37 @@ describe BasicCache::TimeCache do
       expect(cache['a']).to eql 3
       sleep 2
       expect { cache['a'] }.to raise_error KeyError
+    end
+  end
+  describe '#clear!' do
+    describe 'when given no argument' do
+      it 'clears the cache' do
+        expect(cache.size).to eql 3
+        cache.clear!
+        expect(cache.size).to eql 0
+      end
+    end
+    describe 'when given an argument' do
+      it 'removes that entry from the cache' do
+        expect(cache.size).to eql 3
+        expect(cache.clear! 'c').to be_nil
+        expect(cache.size).to eql 3
+        expect(cache.clear! 'a').to eql 3
+        expect(cache.size).to eql 2
+        expect(cache.clear! :b).to eql 5
+        expect(cache.size).to eql 1
+        expect(cache.clear! names[2]).to eql 9
+        expect(cache.size).to eql 0
+      end
+    end
+  end
+  describe '#prune' do
+    it 'prunes invalid cache entries' do
+      expect(cache.store.size).to eql 3
+      sleep 2
+      expect(cache.store.size).to eql 3
+      expect(cache.prune).to eql [:a, :b, names[2]]
+      expect(cache.store.size).to eql 0
     end
   end
 end

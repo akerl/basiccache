@@ -49,17 +49,26 @@ module BasicCache
       @store.include?(key) && Time.now - @store[key].stamp < @lifetime
     end
 
+    ##
+    # Retrieve a value
+
     def [](key = nil)
       super.value
+    end
+
+    ##
+    # Remove a value, or clear the cache
+
+    def clear!(key = nil)
+      resp = super
+      resp.class == TimeCacheItem ? resp.value : resp
     end
 
     ##
     # Prune expired keys
 
     def prune
-      @store.keys.each do |k|
-        clear! k if Time.now - @store[k].stamp > @lifetime
-      end
+      @store.keys.reject { |k| include? k }.map { |k| clear!(k) && k }
     end
   end
 end

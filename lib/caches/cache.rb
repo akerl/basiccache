@@ -59,13 +59,15 @@ module BasicCache
     # Empty out either the given key or the full store
 
     def clear!(key = nil)
-      key.nil? ? @store.clear! : @store.delete(key.to_sym)
+      key = key.to_sym unless key.nil?
+      @store.clear! key
     end
 
     ##
     # Prunes invalid/expired keys (a noop for the basic cache)
 
     def prune
+      []
     end
   end
 end
