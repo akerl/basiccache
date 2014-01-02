@@ -13,8 +13,8 @@ describe BasicCache::Cache do
   it 'creates a cache' do
     expect(subject).to be_an_instance_of BasicCache::Cache
   end
-  it 'has a hash store' do
-    expect(subject.store).to eql Hash.new
+  it 'has a store' do
+    expect(subject.store).to be_an_instance_of BasicCache::Store
   end
   describe '#size' do
     it 'shows the size of the cache' do

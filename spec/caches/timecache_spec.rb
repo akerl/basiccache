@@ -13,8 +13,8 @@ describe BasicCache::TimeCache do
   it 'creates a cache' do
     expect(cache).to be_an_instance_of BasicCache::TimeCache
   end
-  it 'has a hash store' do
-    expect(subject.store).to eql Hash.new
+  it 'has a store' do
+    expect(subject.store).to be_an_instance_of BasicCache::Store
   end
   it 'has a set lifetime' do
     expect(cache.lifetime).to eq 1

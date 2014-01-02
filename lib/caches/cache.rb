@@ -59,7 +59,7 @@ module BasicCache
     # Empty out either the given key or the full store
 
     def clear!(key = nil)
-      key.nil? ? @store.clear : @store.delete(key.to_sym)
+      key.nil? ? @store.clear! : @store.delete(key.to_sym)
     end
 
     ##

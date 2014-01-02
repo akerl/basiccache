@@ -25,7 +25,7 @@ module BasicCache
     ##
     # Return the size of the cache (don't include expired entries)
 
-    def size(purge = true)
+    def size
       @store.keys.count { |k| Time.now - @store[k].stamp < @lifetime }
     end
 
@@ -36,9 +36,7 @@ module BasicCache
     def cache(key = nil, &code)
       key ||= BasicCache.caller_name
       key = key.to_sym
-      unless @store.include?(key) && Time.now - @store[key].stamp < @lifetime
-        @store[key] = TimeCacheItem.new(Time.now, code.call)
-      end
+      @store[key] = TimeCacheItem.new(Time.now, code.call) unless include? key
       @store[key].value
     end
 
