@@ -116,7 +116,7 @@ When creating a new cache object, provide a lifetime or use the default of 30 se
 default_cache = BasicCache::TimeCache.new
 puts "Default Lifetime: #{default_cache.lifetime}"
 
-custom_cache = BasicCache::TimeCache.new(3)
+custom_cache = BasicCache::TimeCache.new(lifetime: 3)
 puts "Default Lifetime: #{custom_cache.lifetime}"
 
 custom_cache.cache('test') { "fish" }
