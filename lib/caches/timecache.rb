@@ -1,6 +1,5 @@
 ##
 # Extends BasicCache to add a time-based cache
-
 module BasicCache
   ##
   # Timecache item struct, timestamp and value
@@ -9,7 +8,6 @@ module BasicCache
 
   ##
   # Time-based cache object
-
   class TimeCache < Cache
     attr_reader :lifetime
 

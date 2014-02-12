@@ -1,6 +1,5 @@
 ##
 # Define the basic cache and default store objects
-
 module BasicCache
   ##
   # Set default Store type
@@ -9,7 +8,6 @@ module BasicCache
 
   ##
   # Cache object, maintains a key/value store
-
   class Cache
     attr_reader :store
 

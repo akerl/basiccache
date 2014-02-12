@@ -2,7 +2,6 @@
 # Helper module for caching methods inside a class
 # To use, extend your class with MethodCacher
 # Then, in initialize, call enable_caching
-
 module MethodCacher
   ##
   # Enable caching for the listed methods

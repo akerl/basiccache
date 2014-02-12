@@ -2,7 +2,6 @@ require 'spec_helper'
 
 ##
 # Example class for testing method caching
-
 class Example
   include MethodCacher
 

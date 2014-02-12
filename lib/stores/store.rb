@@ -1,7 +1,6 @@
 module BasicCache
   ##
   # Basic store object (uses a Hash)
-
   class Store
     attr_reader :raw
 

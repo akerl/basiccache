@@ -1,6 +1,5 @@
 ##
 # This module provides a simple key/value cache for storing computation results
-
 module BasicCache
   # Check if we're using a version if Ruby that supports caller_locations
   NEW_CALL = Kernel.respond_to? 'caller_locations'
