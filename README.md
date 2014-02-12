@@ -11,6 +11,10 @@ Provides a minimal key/value caching layer
 
 ## Usage
 
+BasicCache utilizes two different components to cache data:
+    * Stores, which are backends for holding keys and values
+    * Caches, which handle expiration logic.
+
 First, initialize a caching object:
 
 ```
