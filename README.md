@@ -38,11 +38,11 @@ require 'benchmark'
 my_cache = BasicCache.new
 
 3.times do
-    puts Benchmark.measure {
-        my_cache.cache('foo') do
-            (1..50_000).reduce { |acc, i| acc*i }
-        end
-    }
+  puts Benchmark.measure {
+    my_cache.cache('foo') do
+      (1..50_000).reduce { |acc, i| acc*i }
+    end
+  }
 end
 ```
 
@@ -114,17 +114,26 @@ Store backends can be provided to a Cache object when it is created via the `:st
 ```
 require 'basiccache'
 require 'redisstore'
+require 'benchmark'
 
 my_store = RedisStore.new
 my_cache = BasicCache.new(store: my_store)
 
 3.times do
-    puts Benchmark.measure {
-        my_cache.cache('bar') do
-            (1..50_000).reduce { |acc, i| acc*i }
-        end
-    }
+  puts Benchmark.measure {
+    my_cache.cache('bar') do
+      (1..50_000).reduce { |acc, i| acc*i }
+    end
+  }
 end
+```
+
+Results:
+
+```
+  0.000000   0.000000   0.000000 (  0.001434)
+  0.000000   0.000000   0.000000 (  0.000294)
+  0.000000   0.000000   0.000000 (  0.000207)
 ```
 
 ### MethodCacher
