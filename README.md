@@ -1,13 +1,18 @@
 BasicCache
 ========
 
-[![Gem Version](https://badge.fury.io/rb/basiccache.png)](https://badge.fury.io/rb/basiccache)
-[![Dependency Status](https://gemnasium.com/akerl/basiccache.png)](https://gemnasium.com/akerl/basiccache)
-[![Code Climate](https://codeclimate.com/github/akerl/basiccache.png)](https://codeclimate.com/github/akerl/basiccache)
-[![Coverage Status](https://coveralls.io/repos/akerl/basiccache/badge.png?branch=master)](https://coveralls.io/r/akerl/basiccache?branch=master)
-[![Build Status](https://travis-ci.org/akerl/basiccache.png?branch=master)](https://travis-ci.org/akerl/basiccache)
+[![Gem Version](https://img.shields.io/gem/v/basiccache.svg)](https://rubygems.org/gems/basiccache)
+[![Dependency Status](https://img.shields.io/gemnasium/akerl/basiccache.svg)](https://gemnasium.com/akerl/basiccache)
+[![Code Climate](https://img.shields.io/codeclimate/github/akerl/basiccache.svg)](https://codeclimate.com/github/akerl/basiccache)
+[![Coverage Status](https://img.shields.io/coveralls/akerl/basiccache.svg)](https://coveralls.io/r/akerl/basiccache)
+[![Build Status](https://img.shields.io/travis/akerl/basiccache.svg)](https://travis-ci.org/akerl/basiccache)
+[![MIT Licensed](https://img.shields.io/badge/license-MIT-green.svg)](https://tldrlegal.com/license/mit-license)
 
 Provides a minimal key/value caching layer
+
+## Installation
+
+    gem install basiccache
 
 ## Usage
 
@@ -74,6 +79,10 @@ Results:
 9
 0
 ```
+
+### Important Note About Keys
+
+BasicCache attempts to guess the key name from the stack by looking for the name of the method that called it. This is convenient for most use cases, but if you're using metaprogramming or nested code blocks, this can cause that method name to be "block (2 levels) in \<top (required)>" or similar. In this case, keys can conflict and give back weird results. The fix is for you to manually specify your own keys to .cache calls.
 
 ### Using other Caches
 
@@ -166,43 +175,25 @@ class Foo
 end
 ```
 
-## Subclasses
+## Extending BasicCache
 
-### TimeCache
+Creating your own Cache or Store is pretty simple. These are the required methods that each needs to provide:
 
-This cache behaves similarly, with the addition of a lifetime attribute.
+Cache:
+* `.size()` -> Size of the cache as an integer. Expired/invalid keys should not count towards this.
+* `.cache(key = nil, &block)` -> If key exists, return stored value; if not, run block, store value, and return it. If no key is provided, use BasicCache.caller_name to infer one.
+* `.include?(key = nil)` -> Return boolean indicating presence of key in Cache. Expired/invalid keys should return false. If no key is provided, use BasicCache.caller_name to infer one.
+* `.[](key)` -> Return value if key is cached, else return KeyError
+* `.clear!(key = nil)` -> With no key, clear the whole cache and return {}. With a key, clear that key and return the value it had.
+* `.prune()` -> Prune expired/invalid keys from the store. Return any pruned keys.
 
-When creating a new cache object, provide a lifetime or use the default of 30 seconds:
-
-```
-default_cache = BasicCache::TimeCache.new
-puts "Default Lifetime: #{default_cache.lifetime}"
-
-custom_cache = BasicCache::TimeCache.new(lifetime: 3)
-puts "Default Lifetime: #{custom_cache.lifetime}"
-
-custom_cache.cache('test') { "fish" }
-puts "Does the cache include 'test'? #{custom_cache.include? 'test'}"
-sleep 5
-puts "Does the cache include 'test' now? #{custom_cache.include? 'test'}"
-```
-
-This returns the following:
-
-```
-Default Lifetime: 30
-Default Lifetime: 3
-Does the cache include 'test'? true
-Does the cache include 'test' now? false
-```
-
-## Important Note About Keys
-
-BasicCache attempts to guess the key name from the stack by looking for the name of the method that called it. This is convenient for most use cases, but if you're using metaprogramming or nested code blocks, this can cause that method name to be "block (2 levels) in \<top (required)>" or similar. In this case, keys can conflict and give back weird results. The fix is for you to manually specify your own keys to .cache calls.
-
-## Installation
-
-    gem install basiccache
+Store:
+* `.clear!(key = nil)` -> With no key, clear the whole cache and return {}. With a key, clear that key and return the value it had.
+* `.[](key)` -> Return the value stored for the given key if it exists, else return KeyError.
+* `.[]=(key, value)` -> Store the given value with the given key, and return the value.
+* `.size()` -> Return the size of the store as an integer.
+* `.include?(key)` -> Return a boolean indicating presence of the given key in the store.
+* `.keys()` -> Return all keys in the store as an array.
 
 ## License
 
