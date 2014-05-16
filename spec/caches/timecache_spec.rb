@@ -1,8 +1,9 @@
 require 'spec_helper'
+require 'timecop'
 
 describe BasicCache::TimeCache do
   let(:cache) do
-    cache = BasicCache::TimeCache.new(lifetime: 1)
+    cache = BasicCache::TimeCache.new(lifetime: 10)
     cache.cache('a') { 3 }
     cache.cache(:b) { 5 }
     cache.cache { 9 }
@@ -17,7 +18,7 @@ describe BasicCache::TimeCache do
     expect(subject.store).to be_an_instance_of BasicCache::Store
   end
   it 'has a set lifetime' do
-    expect(cache.lifetime).to eq 1
+    expect(cache.lifetime).to eq 10
     expect(BasicCache::TimeCache.new.lifetime).to eq 60
   end
   describe '#size' do
@@ -27,8 +28,9 @@ describe BasicCache::TimeCache do
     end
     it 'does not include expired items in size' do
       expect(cache.size).to eql 3
-      sleep 2
-      expect(cache.size).to eql 0
+      Timecop.freeze(Time.now + 60) do
+        expect(cache.size).to eql 0
+      end
     end
   end
   describe '#cache' do
@@ -44,8 +46,9 @@ describe BasicCache::TimeCache do
     end
     it 'expires values after their lifetime' do
       expect(cache.include? 'a').to be_true
-      sleep 2
-      expect(cache.include? 'a').to be_false
+      Timecop.freeze(Time.now + 60) do
+        expect(cache.include? 'a').to be_false
+      end
     end
   end
   describe '#include?' do
@@ -64,8 +67,9 @@ describe BasicCache::TimeCache do
     end
     it 'will not return an expired key' do
       expect(cache['a']).to eql 3
-      sleep 2
-      expect { cache['a'] }.to raise_error KeyError
+      Timecop.freeze(Time.now + 60) do
+        expect { cache['a'] }.to raise_error KeyError
+      end
     end
   end
   describe '#clear!' do
@@ -93,10 +97,11 @@ describe BasicCache::TimeCache do
   describe '#prune' do
     it 'prunes invalid cache entries' do
       expect(cache.store.size).to eql 3
-      sleep 2
-      expect(cache.store.size).to eql 3
-      expect(cache.prune).to eql [:a, :b, names[2]]
-      expect(cache.store.size).to eql 0
+      Timecop.freeze(Time.now + 60) do
+        expect(cache.store.size).to eql 3
+        expect(cache.prune).to eql [:a, :b, names[2]]
+        expect(cache.store.size).to eql 0
+      end
     end
   end
 end

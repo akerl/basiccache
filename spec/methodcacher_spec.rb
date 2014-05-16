@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'timecop'
 
 ##
 # Example class for testing method caching
@@ -8,7 +9,7 @@ class Example
   def initialize(skip_cache = false)
     return if skip_cache
     enable_caching [:repeat]
-    enable_caching [:time_repeat], BasicCache::TimeCache.new(lifetime: 1)
+    enable_caching [:time_repeat], BasicCache::TimeCache.new(lifetime: 10)
   end
 
   def repeat(input)
@@ -44,8 +45,9 @@ describe MethodCacher do
     it 'allows a user-supplied cache object' do
       expect(test_object.time_repeat 2).to eql 2
       expect(test_object.time_repeat 3).to eql 2
-      sleep 2
-      expect(test_object.time_repeat 4).to eql 4
+      Timecop.freeze(Time.now + 60) do
+        expect(test_object.time_repeat 4).to eql 4
+      end
     end
     it 'does not override other methods' do
       expect(test_object.not_cached 7).to eql 7
