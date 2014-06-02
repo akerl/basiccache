@@ -9,13 +9,13 @@ describe BasicCache do
 
   describe '#caller_name' do
     it "returns the calling function's name" do
-      expect(BasicCache.caller_name).to eql 'instance_eval'
+      expect(BasicCache.caller_name).to eql 'instance_exec'
     end
     it 'uses caller_locations on Ruby 2.0.0+' do
-      expect(BasicCache::NEW_CALL).to be_true if RUBY_VERSION.to_i >= 2
+      expect(BasicCache::NEW_CALL).to be_truthy if RUBY_VERSION.to_i >= 2
     end
     it 'uses caller on Ruby 1.x' do
-      expect(BasicCache::NEW_CALL).to be_false if RUBY_VERSION.to_i < 2
+      expect(BasicCache::NEW_CALL).to be_falsey if RUBY_VERSION.to_i < 2
     end
   end
 end

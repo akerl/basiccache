@@ -26,20 +26,20 @@ describe BasicCache::Cache do
     it 'caches values without a key' do
       subject.cache { 9 }
       expect(subject.cache { 10 }).to eql 9
-      expect(subject.include?).to be_true
+      expect(subject.include?).to be_truthy
     end
     it 'caches values with a key' do
       subject.cache('c') { 1 }
       expect(subject.cache('c') { 2 }).to eql 1
-      expect(subject.include? :c). to be_true
+      expect(subject.include? :c). to be_truthy
     end
   end
   describe '#include?' do
     it 'checks for a value in the cache' do
-      expect(cache.include? 'a').to be_true
-      expect(cache.include? :b).to be_true
-      expect(cache.include? 'z').to be_false
-      expect(cache.include? names[2]).to be_true
+      expect(cache.include? 'a').to be_truthy
+      expect(cache.include? :b).to be_truthy
+      expect(cache.include? 'z').to be_falsey
+      expect(cache.include? names[2]).to be_truthy
     end
   end
   describe '#[]' do

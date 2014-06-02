@@ -13,7 +13,7 @@ module MethodCacher
       (class << self; self; end).class_eval do
         alias_method uncached_name, name
         define_method(name) do |*a, &b|
-          cache.cache(name) { send uncached_name, *a }
+          cache.cache(name) { send uncached_name, *a, &b }
         end
       end
     end
