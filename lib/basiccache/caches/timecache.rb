@@ -34,8 +34,13 @@ module BasicCache
     def cache(key = nil, &code)
       key ||= BasicCache.caller_name
       key = key.to_sym
-      @store[key] = TimeCacheItem.new(Time.now, code.call) unless include? key
-      @store[key].value
+      if include? key
+        @store[key].value
+      else
+        value = code.call
+        @store[key] = TimeCacheItem.new Time.now, value
+        value
+      end
     end
 
     ##
