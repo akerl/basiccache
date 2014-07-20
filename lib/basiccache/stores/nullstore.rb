@@ -7,7 +7,7 @@ module BasicCache
     ##
     # Generate an empty store
 
-    def initialize
+    def initialize(_ = {})
       @raw = nil
     end
 

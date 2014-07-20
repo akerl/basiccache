@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'basiccache'
-  s.version     = '0.2.1'
+  s.version     = '0.2.2'
   s.date        = Time.now.strftime("%Y-%m-%d")
   s.summary     = 'Provides a minimal key/value caching layer'
   s.description = "Allows an application to dynamically cache values and retrieve them later"
