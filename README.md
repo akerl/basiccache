@@ -16,6 +16,8 @@ Provides a minimal key/value caching layer
 
 ## Usage
 
+_API docs can be found at http://www.rubydoc.info/github/akerl/basiccache_
+
 BasicCache utilizes two different components to cache data:
     * Stores, which are backends for holding keys and values
     * Caches, which handle expiration logic
