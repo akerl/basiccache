@@ -1,12 +1,12 @@
 BasicCache
 ========
 
-[![Gem Version](https://img.shields.io/gem/v/basiccache.svg)](https://rubygems.org/gems/basiccache)
-[![Dependency Status](https://img.shields.io/gemnasium/akerl/basiccache.svg)](https://gemnasium.com/akerl/basiccache)
-[![Code Climate](https://img.shields.io/codeclimate/github/akerl/basiccache.svg)](https://codeclimate.com/github/akerl/basiccache)
-[![Coverage Status](https://img.shields.io/coveralls/akerl/basiccache.svg)](https://coveralls.io/r/akerl/basiccache)
-[![Build Status](https://img.shields.io/travis/akerl/basiccache.svg)](https://travis-ci.org/akerl/basiccache)
-[![MIT Licensed](https://img.shields.io/badge/license-MIT-green.svg)](https://tldrlegal.com/license/mit-license)
+[![Gem Version](https://img.shields.io/gem/v/basiccache.svg?style=flat)](https://rubygems.org/gems/basiccache)
+[![Dependency Status](https://img.shields.io/gemnasium/akerl/basiccache.svg?style=flat)](https://gemnasium.com/akerl/basiccache)
+[![Code Climate](https://img.shields.io/codeclimate/github/akerl/basiccache.svg?style=flat)](https://codeclimate.com/github/akerl/basiccache)
+[![Coverage Status](https://img.shields.io/coveralls/akerl/basiccache.svg?style=flat)](https://coveralls.io/r/akerl/basiccache)
+[![Build Status](https://img.shields.io/travis/akerl/basiccache.svg?style=flat)](https://travis-ci.org/akerl/basiccache)
+[![MIT Licensed](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://tldrlegal.com/license/mit-license)
 
 Provides a minimal key/value caching layer
 
