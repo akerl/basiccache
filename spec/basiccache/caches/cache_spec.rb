@@ -73,7 +73,7 @@ describe BasicCache::Cache do
   end
   describe '#prune' do
     it 'prunes invalid keys (none for Cache)' do
-      expect(cache.prune).to eql Array.new
+      expect(cache.prune).to eql []
     end
   end
 end
