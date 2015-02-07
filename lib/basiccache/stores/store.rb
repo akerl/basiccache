@@ -2,55 +2,55 @@ module BasicCache
   ##
   # Basic store object (uses a Hash)
   class Store
-    attr_reader :raw
+    attr_reader :data
 
     ##
     # Generate an empty store
 
     def initialize(_ = {})
-      @raw = {}
+      @data = {}
     end
 
     ##
     # Clears a specified key or the whole store
 
     def clear!(key = nil)
-      key.nil? ? @raw.clear : @raw.delete(key)
+      key.nil? ? @data.clear : @data.delete(key)
     end
 
     ##
     # Retrieve a key
 
     def [](key)
-      @raw[key]
+      @data[key]
     end
 
     ##
     # Set a key
 
     def []=(key, value)
-      @raw[key] = value
+      @data[key] = value
     end
 
     ##
     # Return the size of the store
 
     def size
-      @raw.size
+      @data.size
     end
 
     ##
     # Check for a key in the store
 
     def include?(key)
-      @raw.include? key
+      @data.include? key
     end
 
     ##
     # Array of keys in the store
 
     def keys
-      @raw.keys
+      @data.keys
     end
   end
 end

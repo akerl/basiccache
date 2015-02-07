@@ -5,7 +5,7 @@ describe BasicCache::NullStore do
 
   describe '#initialize' do
     it 'creates a new null store object' do
-      expect(store.raw).to be_nil
+      expect(store.data).to be_nil
     end
   end
   describe '#clear!' do

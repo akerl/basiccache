@@ -2,13 +2,13 @@ module BasicCache
   ##
   # No-op store object, does not store information
   class NullStore
-    attr_reader :raw
+    attr_reader :data
 
     ##
     # Generate an empty store
 
     def initialize(_ = {})
-      @raw = nil
+      @data = nil
     end
 
     ##
