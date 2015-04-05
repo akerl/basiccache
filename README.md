@@ -19,8 +19,9 @@ Provides a minimal key/value caching layer
 _API docs can be found at http://www.rubydoc.info/github/akerl/basiccache_
 
 BasicCache utilizes two different components to cache data:
-    * Stores, which are backends for holding keys and values
-    * Caches, which handle expiration logic
+
+* Stores, which are backends for holding keys and values
+* Caches, which handle expiration logic
 
 You can create a new default cache object using `BasicCache.new`:
 
