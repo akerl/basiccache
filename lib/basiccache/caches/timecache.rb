@@ -31,13 +31,13 @@ module BasicCache
     # Return a value from the cache, or calculate it and store it
     # Recalculate if the cached value has expired
 
-    def cache(key = nil, &code)
+    def cache(key = nil)
       key ||= BasicCache.caller_name
       key = key.to_sym
       if include? key
         @store[key].value
       else
-        value = code.call
+        value = yield
         @store[key] = TimeCacheItem.new Time.now, value
         value
       end

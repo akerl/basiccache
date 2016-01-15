@@ -31,15 +31,15 @@ describe BasicCache::Cache do
     it 'caches values with a key' do
       subject.cache('c') { 1 }
       expect(subject.cache('c') { 2 }).to eql 1
-      expect(subject.include? :c). to be_truthy
+      expect(subject.include?(:c)). to be_truthy
     end
   end
   describe '#include?' do
     it 'checks for a value in the cache' do
-      expect(cache.include? 'a').to be_truthy
-      expect(cache.include? :b).to be_truthy
-      expect(cache.include? 'z').to be_falsey
-      expect(cache.include? names[2]).to be_truthy
+      expect(cache.include?('a')).to be_truthy
+      expect(cache.include?(:b)).to be_truthy
+      expect(cache.include?('z')).to be_falsey
+      expect(cache.include?(names[2])).to be_truthy
     end
   end
   describe '#[]' do
@@ -60,13 +60,13 @@ describe BasicCache::Cache do
     describe 'when given an argument' do
       it 'removes that entry from the cache' do
         expect(cache.size).to eql 3
-        expect(cache.clear! 'c').to be_nil
+        expect(cache.clear!('c')).to be_nil
         expect(cache.size).to eql 3
-        expect(cache.clear! 'a').to eql 3
+        expect(cache.clear!('a')).to eql 3
         expect(cache.size).to eql 2
-        expect(cache.clear! :b).to eql 5
+        expect(cache.clear!(:b)).to eql 5
         expect(cache.size).to eql 1
-        expect(cache.clear! names[2]).to eql 9
+        expect(cache.clear!(names[2])).to eql 9
         expect(cache.size).to eql 0
       end
     end

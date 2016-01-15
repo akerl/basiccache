@@ -32,8 +32,8 @@ describe BasicCache::NullStore do
   end
   describe '#include?' do
     it 'always returns false' do
-      expect(store.include? :foo).to be_falsey
-      expect(store.include? 1).to be_falsey
+      expect(store.include?(:foo)).to be_falsey
+      expect(store.include?(1)).to be_falsey
     end
   end
   describe '#keys' do

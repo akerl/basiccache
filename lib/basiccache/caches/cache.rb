@@ -30,9 +30,9 @@ module BasicCache
     # If the key is cached, return it.
     # If not, run the code, cache the result, and return it
 
-    def cache(key = nil, &code)
+    def cache(key = nil)
       key ||= BasicCache.caller_name
-      @store[key.to_sym] ||= code.call
+      @store[key.to_sym] ||= yield
     end
 
     ##
