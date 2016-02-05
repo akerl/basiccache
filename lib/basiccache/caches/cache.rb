@@ -49,7 +49,7 @@ module BasicCache
 
     def [](key = nil)
       key ||= BasicCache.caller_name
-      fail KeyError, 'Key not cached' unless include? key.to_sym
+      raise KeyError, 'Key not cached' unless include? key.to_sym
       @store[key.to_sym]
     end
 
