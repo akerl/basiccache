@@ -1,5 +1,6 @@
 require 'spec_helper'
 
+# rubocop:disable Metrics/BlockLength
 describe BasicCache::NullStore do
   let(:store) { BasicCache::NullStore.new }
 
