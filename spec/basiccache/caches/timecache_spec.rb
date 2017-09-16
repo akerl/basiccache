@@ -1,7 +1,6 @@
 require 'spec_helper'
 require 'timecop'
 
-# rubocop:disable Metrics/BlockLength
 describe BasicCache::TimeCache do
   let(:cache) do
     cache = BasicCache::TimeCache.new(lifetime: 10)

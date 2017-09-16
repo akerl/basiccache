@@ -29,7 +29,6 @@ class Example
   end
 end
 
-# rubocop:disable Metrics/BlockLength
 describe MethodCacher do
   let(:test_object) { Example.new }
   let(:uncached_object) { Example.new(skip_cache: true) }

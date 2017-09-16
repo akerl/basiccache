@@ -1,9 +1,9 @@
 Gem::Specification.new do |s|
   s.name        = 'basiccache'
   s.version     = '1.0.0'
-  s.date        = Time.now.strftime("%Y-%m-%d")
+  s.date        = Time.now.strftime('%Y-%m-%d')
   s.summary     = 'Provides a minimal key/value caching layer'
-  s.description = "Allows an application to dynamically cache values and retrieve them later"
+  s.description = 'Allows an application to dynamically cache values and retrieve them later' # rubocop:disable Metrics/LineLength
   s.authors     = ['Les Aker']
   s.email       = 'me@lesaker.org'
   s.homepage    = 'https://github.com/akerl/basiccache'
