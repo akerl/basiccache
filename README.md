@@ -2,7 +2,6 @@ BasicCache
 ========
 
 [![Gem Version](https://img.shields.io/gem/v/basiccache.svg)](https://rubygems.org/gems/basiccache)
-[![Dependency Status](https://img.shields.io/gemnasium/akerl/basiccache.svg)](https://gemnasium.com/akerl/basiccache)
 [![Build Status](https://img.shields.io/circleci/project/akerl/basiccache/master.svg)](https://circleci.com/gh/akerl/basiccache)
 [![Coverage Status](https://img.shields.io/codecov/c/github/akerl/basiccache.svg)](https://codecov.io/github/akerl/basiccache)
 [![Code Quality](https://img.shields.io/codacy/4d51cd5021024c539a6e007dfcd2dc6e.svg)](https://www.codacy.com/app/akerl/basiccache)
