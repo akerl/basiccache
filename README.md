@@ -2,9 +2,7 @@ BasicCache
 ========
 
 [![Gem Version](https://img.shields.io/gem/v/basiccache.svg)](https://rubygems.org/gems/basiccache)
-[![Build Status](https://img.shields.io/travis/com/akerl/basiccache.svg)](https://travis-ci.com/akerl/basiccache)
-[![Coverage Status](https://img.shields.io/codecov/c/github/akerl/basiccache.svg)](https://codecov.io/github/akerl/basiccache)
-[![Code Quality](https://img.shields.io/codacy/4d51cd5021024c539a6e007dfcd2dc6e.svg)](https://www.codacy.com/app/akerl/basiccache)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/akerl/basiccache/Build)](https://github.com/akerl/basiccache/actions)
 [![MIT Licensed](https://img.shields.io/badge/license-MIT-green.svg)](https://tldrlegal.com/license/mit-license)
 
 Provides a minimal key/value caching layer
