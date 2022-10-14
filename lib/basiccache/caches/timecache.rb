@@ -64,7 +64,7 @@ module BasicCache
 
     def clear!(key = nil)
       resp = super
-      resp.class == TimeCacheItem ? resp.value : resp
+      resp.instance_of?(TimeCacheItem) ? resp.value : resp
     end
 
     ##

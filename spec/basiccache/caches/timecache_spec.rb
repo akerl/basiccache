@@ -42,7 +42,7 @@ describe BasicCache::TimeCache do
     it 'caches values with a key' do
       subject.cache('c') { 1 }
       expect(subject.cache('c') { 2 }).to eql 1
-      expect(subject.include?(:c)). to be_truthy
+      expect(subject.include?(:c)).to be_truthy
     end
     it 'expires values after their lifetime' do
       expect(cache.include?('a')).to be_truthy
