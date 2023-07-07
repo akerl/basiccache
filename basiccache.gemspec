@@ -14,6 +14,6 @@ Gem::Specification.new do |s|
   s.files       = `git ls-files`.split
 
   s.add_development_dependency 'goodcop', '~> 0.9.7'
-  s.add_development_dependency 'timecop', '~> 0.9.0'
+  s.add_development_dependency 'timecop', '~> 0.9.6'
   s.metadata['rubygems_mfa_required'] = 'true'
 end
