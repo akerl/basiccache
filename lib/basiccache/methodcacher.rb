@@ -9,7 +9,7 @@ module MethodCacher
   def enable_caching(methods, cache = nil)
     cache ||= BasicCache.new
     methods.each do |name|
-      uncached_name = "#{name}_uncached".to_sym
+      uncached_name = :"#{name}_uncached"
       singleton_class.class_eval do
         alias_method uncached_name, name
         define_method(name) do |*a, &b|

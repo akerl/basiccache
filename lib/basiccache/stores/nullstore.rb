@@ -14,7 +14,7 @@ module BasicCache
     ##
     # Clears a specified key or the whole store
 
-    def clear!(*_)
+    def clear!(*_) # rubocop:disable Naming/PredicateMethod
       true
     end
 
